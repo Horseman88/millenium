@@ -62,6 +62,11 @@
             <span class="font-bold text-2xl tracking-tight" data-translate-key="heroTitle1">SOLA</span>
             <!-- Also heroTitle1, but this is the nav branding -->
           </a>
+          <!-- Language Switcher - Desktop - Moved to the left -->
+          <div class="ml-4 flex items-center space-x-2">
+            <button onclick="setLanguage('en')" class="px-2 py-1 rounded-md text-xs font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">ENG</button>
+            <button onclick="setLanguage('ru')" class="px-2 py-1 rounded-md text-xs font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">RUS</button>
+          </div>
         </div>
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
@@ -69,11 +74,13 @@
             <a href="./about.html" data-navlink="about.html" data-translate-key="navAbout" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">About Us</a>
             <a href="./products.html" data-navlink="products.html" data-translate-key="navDrones" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Our Drones</a>
             <a href="./contact.html" data-navlink="contact.html" data-translate-key="navContact" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Contact Us</a>
-            <!-- Language Switcher - Desktop -->
+            <!-- Language Switcher - Desktop (Original Position - Removed) -->
+            <!--
             <div class="ml-4 flex items-center space-x-2">
               <button onclick="setLanguage('en')" class="px-2 py-1 rounded-md text-xs font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">ENG</button>
               <button onclick="setLanguage('ru')" class="px-2 py-1 rounded-md text-xs font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">RUS</button>
             </div>
+            -->
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">
@@ -98,15 +105,22 @@
 
     <div class="md:hidden hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <!-- Language Switcher - Mobile - Moved to the top -->
+        <div class="flex justify-start space-x-2 mb-3">
+            <button onclick="setLanguage('en'); closeMobileMenu();" class="px-3 py-2 rounded-md text-sm font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">ENG</button>
+            <button onclick="setLanguage('ru'); closeMobileMenu();" class="px-3 py-2 rounded-md text-sm font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">RUS</button>
+        </div>
         <a href="./index.html" data-navlink-mobile="index.html" data-translate-key="navHome" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Home</a>
         <a href="./about.html" data-navlink-mobile="about.html" data-translate-key="navAbout" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">About Us</a>
         <a href="./products.html" data-navlink-mobile="products.html" data-translate-key="navDrones" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Our Drones</a>
         <a href="./contact.html" data-navlink-mobile="contact.html" data-translate-key="navContact" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Contact Us</a>
-        <!-- Language Switcher - Mobile -->
+        <!-- Language Switcher - Mobile (Original Position - Removed) -->
+        <!--
         <div class="mt-4 pt-4 border-t border-gray-700 flex justify-center space-x-4">
             <button onclick="setLanguage('en'); closeMobileMenu();" class="px-3 py-2 rounded-md text-sm font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">ENG</button>
             <button onclick="setLanguage('ru'); closeMobileMenu();" class="px-3 py-2 rounded-md text-sm font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">RUS</button>
         </div>
+        -->
       </div>
     </div>
   </nav>
@@ -160,10 +174,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:text-center">
           <h2 class="text-base text-brand-accent font-semibold tracking-wide uppercase" data-translate-key="aboutTeaserTitle">Who We Are</h2>
-          <video controls width="250">
-            <source src="/millenium/video/1.mov" type="video/mp4">
-            Ваш браузер не поддерживает встроенные видео :(
-          </video>
+          <div class="flex justify-center my-4"> <video controls width="250"> <source src="/millenium/video/1.mov" type="video/mp4"> Ваш браузер не поддерживает встроенные видео :( </video> </div>
           <div class="mt-6">
             <a 
               href="./about.html" 
