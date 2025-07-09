@@ -10,11 +10,11 @@
       theme: {
         extend: {
           colors: {
-            'brand-primary': '#1a202c',
-            'brand-secondary': '#2d3748',
-            'brand-accent': '#00BCD4',
-            'brand-light': '#f7fafc',
-            'brand-text': '#e2e8f0',
+            'brand-primary': '#1f2937', // Dark Gray (gray-800)
+            'brand-secondary': '#374151', // Darker Gray (gray-700)
+            'brand-accent': '#f97316',   // Orange (orange-500)
+            'brand-light': '#f3f4f6',   // Light Gray (for backgrounds if needed, or elements on primary/secondary)
+            'brand-text': '#f3f4f6',     // Light Gray Text (gray-100)
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
@@ -27,14 +27,14 @@
   <style>
     /* Custom styles if needed, though Tailwind is preferred */
     .active-nav-link {
-      background-color: #00BCD4; /* brand-accent */
-      color: white;
+      background-color: #f97316; /* brand-accent (orange-500) */
+      color: white; /* Or #1f2937 for better contrast if orange is too light for white text */
     }
     .inactive-nav-link {
-      color: #e2e8f0; /* brand-text */
+      color: #f3f4f6; /* brand-text (gray-100) */
     }
     .inactive-nav-link:hover {
-        background-color: #4a5568; /* gray-700 for hover */
+        background-color: #4b5563; /* A slightly different gray for hover, e.g., gray-600 if secondary is gray-700 */
         color: white;
     }
   </style>
@@ -59,15 +59,21 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.85l.708.707a2.25 2.25 0 010 3.182L11.53 10.53a2.25 2.25 0 01-3.182 0L6.272 8.455a2.25 2.25 0 010-3.182L7.025 4.48c.205-.2.518-.303.85-.303h.568a2.25 2.25 0 002.25-2.25v-.568c0-.334.148.65.405-.85L12 2.25l.708.707a1.125 1.125 0 00.85.405h.568c1.24 0 2.25 1.01 2.25 2.25v.568c0 .334-.148.65-.405.85l-.708.707a2.25 2.25 0 000 3.182l2.473 2.472a2.25 2.25 0 003.182 0l.707-.707c.257-.257.405-.596.405-.955V8.25a2.25 2.25 0 00-2.25-2.25h-.568a1.125 1.125 0 00-.85.405L15.75 6.75v-.568a2.25 2.25 0 00-2.25-2.25h-.568A1.125 1.125 0 0012.75 3.03z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18H4.5a2.25 2.25 0 01-2.25-2.25V13.5A2.25 2.25 0 014.5 11.25H6M18 18h1.5a2.25 2.25 0 002.25-2.25V13.5A2.25 2.25 0 0019.5 11.25H18M12 12.75V21m0 0H9.75M12 21h2.25" />
             </svg>
-            <span class="font-bold text-2xl tracking-tight">Millenium Drones</span>
+            <span class="font-bold text-2xl tracking-tight" data-translate-key="heroTitle1">Millenium Drones</span>
+            <!-- Also heroTitle1, but this is the nav branding -->
           </a>
         </div>
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
-            <a href="./index.html" data-navlink="index.html" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Home</a>
-            <a href="./about.html" data-navlink="about.html" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">About Us</a>
-            <a href="./products.html" data-navlink="products.html" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Our Drones</a>
-            <a href="./contact.html" data-navlink="contact.html" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Contact Us</a>
+            <a href="./index.html" data-navlink="index.html" data-translate-key="navHome" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Home</a>
+            <a href="./about.html" data-navlink="about.html" data-translate-key="navAbout" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">About Us</a>
+            <a href="./products.html" data-navlink="products.html" data-translate-key="navDrones" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Our Drones</a>
+            <a href="./contact.html" data-navlink="contact.html" data-translate-key="navContact" class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Contact Us</a>
+            <!-- Language Switcher - Desktop -->
+            <div class="ml-4 flex items-center space-x-2">
+              <button onclick="setLanguage('en')" class="px-2 py-1 rounded-md text-xs font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">ENG</button>
+              <button onclick="setLanguage('ru')" class="px-2 py-1 rounded-md text-xs font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">RUS</button>
+            </div>
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">
@@ -92,10 +98,15 @@
 
     <div class="md:hidden hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="./index.html" data-navlink-mobile="index.html" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Home</a>
-        <a href="./about.html" data-navlink-mobile="about.html" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">About Us</a>
-        <a href="./products.html" data-navlink-mobile="products.html" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Our Drones</a>
-        <a href="./contact.html" data-navlink-mobile="contact.html" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Contact Us</a>
+        <a href="./index.html" data-navlink-mobile="index.html" data-translate-key="navHome" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Home</a>
+        <a href="./about.html" data-navlink-mobile="about.html" data-translate-key="navAbout" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">About Us</a>
+        <a href="./products.html" data-navlink-mobile="products.html" data-translate-key="navDrones" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Our Drones</a>
+        <a href="./contact.html" data-navlink-mobile="contact.html" data-translate-key="navContact" class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ease-in-out inactive-nav-link">Contact Us</a>
+        <!-- Language Switcher - Mobile -->
+        <div class="mt-4 pt-4 border-t border-gray-700 flex justify-center space-x-4">
+            <button onclick="setLanguage('en'); closeMobileMenu();" class="px-3 py-2 rounded-md text-sm font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">ENG</button>
+            <button onclick="setLanguage('ru'); closeMobileMenu();" class="px-3 py-2 rounded-md text-sm font-medium text-brand-text hover:bg-brand-accent hover:text-brand-primary transition-colors duration-150">RUS</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -114,10 +125,10 @@
       <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
         <div class="text-center lg:text-left">
           <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-            <span class="block">Millenium Drones</span>
-            <span class="block text-brand-accent mt-2">Elevate Your Perspective</span>
+            <span class="block" data-translate-key="heroTitle1">Millenium Drones</span>
+            <span class="block text-brand-accent mt-2" data-translate-key="heroTitle2">Elevate Your Perspective</span>
           </h1>
-          <p class="mt-6 max-w-md mx-auto text-lg text-brand-text sm:text-xl md:mt-8 md:max-w-3xl lg:mx-0">
+          <p class="mt-6 max-w-md mx-auto text-lg text-brand-text sm:text-xl md:mt-8 md:max-w-3xl lg:mx-0" data-translate-key="heroDescription">
             Discover the next generation of autonomous aerial solutions. Precision engineering, cutting-edge technology, and unparalleled performance for every mission.
           </p>
           <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
@@ -125,6 +136,7 @@
               <a
                 href="./products.html"
                 class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-brand-primary bg-brand-accent hover:bg-opacity-80 md:py-4 md:text-lg md:px-10 transition-colors duration-150"
+                data-translate-key="heroBtnExplore"
               >
                 Explore Drones
               </a>
@@ -133,6 +145,7 @@
               <a
                 href="./about.html"
                 class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-brand-accent bg-brand-secondary hover:bg-gray-700 md:py-4 md:text-lg md:px-10 transition-colors duration-150"
+                data-translate-key="heroBtnLearnMore"
               >
                 Learn More
               </a>
@@ -316,8 +329,8 @@
 
   <footer class="bg-brand-secondary text-brand-text py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p>&copy; <span id="current-year"></span> Millenium Drones. All rights reserved.</p>
-      <p class="text-sm mt-1">Pioneering the Future of Aerial Technology.</p>
+      <p><span data-translate-key="footerRights">&copy; <span id="current-year"></span> Millenium Drones. All rights reserved.</span></p>
+      <p class="text-sm mt-1" data-translate-key="footerSlogan">Pioneering the Future of Aerial Technology.</p>
     </div>
   </footer>
 
