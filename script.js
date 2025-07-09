@@ -132,10 +132,10 @@ const translations = {
     heroBtnExplore: "Посмотреть продукты",
     heroBtnLearnMore: "Узнать больше",
     // About Teaser (index.html)
-    aboutTeaserTitle: "Кто мы",
+    aboutTeaserTitle: "Видео работы дроном",
     aboutTeaserSlogan: "Инновации в небе с SOLA",
     aboutTeaserDescription: "Мы посвятили себя разработке и производству самых современных дронов, которые расширяют границы воздушных технологий. Наша приверженность – качество, надежность и инновации.",
-    aboutTeaserLink: "Узнать о нас больше →",
+    aboutTeaserLink: "Больше видео с дронами →",
     // Products Highlight (index.html)
     productsHighlightTitle: "Наши флагманские дроны",
     productsHighlightSlogan: "Разработано для производительности, создано для надежности.",
