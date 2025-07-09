@@ -330,20 +330,6 @@ function highlightActiveLink() {
     }
   });
 }
-      mobileMenuButton.setAttribute('aria-expanded', String(!isOpen)); // Use String() for boolean attributes
-      openIcon.style.display = isOpen ? 'none' : 'block'; // Corrected logic: open when menu is closed, close when menu is open
-      closeIcon.style.display = isOpen ? 'block' : 'none'; // Corrected logic
-    });
-
-    // Close mobile menu on link click
-    const mobileNavLinks = mobileMenu.querySelectorAll('a');
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMobileMenu(); // Use the new function
-      });
-    });
-  }
-}
 
 // Function to close mobile menu (called by language switcher and nav links)
 function closeMobileMenu() {
