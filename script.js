@@ -330,23 +330,9 @@ function highlightActiveLink() {
     }
   });
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadLanguage(); // Load language first
-
-  // Mobile menu toggle
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const openIcon = mobileMenuButton ? mobileMenuButton.querySelector('.menu-icon-open') : null;
-  const closeIcon = mobileMenuButton ? mobileMenuButton.querySelector('.menu-icon-close') : null;
-
-  if (mobileMenuButton && mobileMenu && openIcon && closeIcon) {
-    mobileMenuButton.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('hidden');
-      mobileMenuButton.setAttribute('aria-expanded', !isOpen);
-      openIcon.style.display = isOpen ? 'block' : 'none';
-      closeIcon.style.display = isOpen ? 'none' : 'block';
+      mobileMenuButton.setAttribute('aria-expanded', String(!isOpen)); // Use String() for boolean attributes
+      openIcon.style.display = isOpen ? 'none' : 'block'; // Corrected logic: open when menu is closed, close when menu is open
+      closeIcon.style.display = isOpen ? 'block' : 'none'; // Corrected logic
     });
 
     // Close mobile menu on link click
@@ -399,9 +385,11 @@ function setupMobileMenu() {
   }
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
   loadLanguage(); // Load language first
   setupMobileMenu(); // Setup mobile menu listeners
+  highlightActiveLink(); // Call this also on load, after language might change nav text
 
   // Contact form submission
   const contactForm = document.getElementById('contact-form');
@@ -441,7 +429,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="text-brand-text mt-2">${currentTranslations[successMessageKey]}</p>
         </div>
       `;
-      (contactForm as HTMLFormElement).reset();
+      // Ensure contactForm is treated as HTMLFormElement for reset()
+      if (contactForm instanceof HTMLFormElement) {
+        contactForm.reset();
+      }
       
       setTimeout(() => {
         formFeedback.classList.add('hidden');
@@ -450,34 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 3000);
     });
   }
-
-  // Active navigation link highlighting
-  const currentLocation = window.location.pathname.split('/').pop() || 'index.html';
-  
-  const desktopNavLinks = document.querySelectorAll('nav div.hidden.md\\:block a[data-navlink]');
-  desktopNavLinks.forEach(link => {
-    const linkPath = link.getAttribute('data-navlink');
-    if (linkPath === currentLocation) {
-      link.classList.add('active-nav-link');
-      link.classList.remove('inactive-nav-link');
-    } else {
-      link.classList.add('inactive-nav-link');
-      link.classList.remove('active-nav-link');
-    }
-  });
-
-  const mobileNavLinks = document.querySelectorAll('#mobile-menu a[data-navlink-mobile]');
-  mobileNavLinks.forEach(link => {
-    const linkPath = link.getAttribute('data-navlink-mobile');
-     if (linkPath === currentLocation) {
-      link.classList.add('active-nav-link');
-      link.classList.remove('inactive-nav-link');
-    } else {
-      link.classList.add('inactive-nav-link');
-      link.classList.remove('active-nav-link');
-    }
-  });
-
 
   // Footer: Current Year
   const yearSpan = document.getElementById('current-year');
